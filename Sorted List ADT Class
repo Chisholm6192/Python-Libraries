@@ -1,0 +1,671 @@
+"""
+-------------------------------------------------------
+Sorted List
+-------------------------------------------------------
+Author:  Ryan Chisholm
+__updated__ = "2023-02-18"
+-------------------------------------------------------
+"""
+from copy import deepcopy
+import math
+
+
+class Sorted_List:
+
+    def __init__(self):
+        """
+        -------------------------------------------------------
+        Initializes an empty Sorted_List.
+        Use: target = Sorted_List()
+        -------------------------------------------------------
+        Returns:
+            a Sorted_List object (Sorted_List)
+        -------------------------------------------------------
+        """
+        self._values = []
+        
+
+    def __contains__(self, key):
+        """
+        ---------------------------------------------------------
+        Determines if source contains key.
+        Use: b = key in source
+        -------------------------------------------------------
+        Parameters:
+            key - a partial data element (?)
+        Returns:
+            True if source contains key, False otherwise. (boolean)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        i = 0
+        
+        while i < len(_values) and _values[i] != key: #run through each index until a value equal to key is found
+            i += 1
+            
+        return i < len(_values) #if the entire list wasn't searched, means value was found, so return result
+    
+
+    def __getitem__(self, i):
+        """
+        ---------------------------------------------------------
+        Returns a copy of the nth element of source.
+        Use: value = source[i]
+        -------------------------------------------------------
+        Parameters:
+            i - index of the element to access (int)
+        Returns:
+            value - the i-th element of source (?)
+        -------------------------------------------------------
+        """
+        assert self._is_valid_index(i), 'Invalid index value'
+        return deepcopy(self._values[i])
+    
+
+    def __len__(self):
+        """
+        -------------------------------------------------------
+        Returns the size of a sorted list.
+        Use: n = len(source)
+        -------------------------------------------------------
+        Returns:
+            the number of values in source.
+        -------------------------------------------------------
+        """
+        return len(self._values)
+
+
+    def _binary_search(self, key):
+        """
+        -------------------------------------------------------
+        Searches for the first occurrence of key in the sorted list. 
+        Performs a stable search.
+        Private helper method - used only by other ADT methods.
+        Use: i = self._binary_search(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a data element (?)
+        Returns:
+            i - the index of the first occurrence of key in
+                the list, -1 if key is not found. (int)
+        -------------------------------------------------------
+        """
+        # Your code here
+
+        return
+
+    def _is_valid_index(self, i):
+        """
+        -------------------------------------------------------
+        Private helper method to validate an index value.
+        Python index values can be positive or negative and range from
+          -len(Sorted_List) to len(Sorted_List) - 1
+        Use: assert self._is_valid_index(i)
+        -------------------------------------------------------
+        Parameters:
+            i - an index value (int)
+        Returns:
+            True if i is a valid index, False otherwise.
+        -------------------------------------------------------
+        """
+        return i in range(-len(self._values), len(self._values))
+    
+
+    def clean(self):
+        """
+        ---------------------------------------------------------
+        Removes duplicates from source.
+        Use: source.clean()
+        -------------------------------------------------------
+        Returns:
+            source contains one and only one of each value formerly present
+            in source. The first occurrence of each value is preserved.
+        -------------------------------------------------------
+        """
+        _values = self._values
+        exists = []
+        i = 0
+        value = len(_values)
+        
+        if len(_values) > 0: #if list is not empty
+            while i < value: #run until value is met
+                if _values[i] not in exists: #if the value has not already been found
+                    exists.append(_values[i])
+                    
+                    i += 1
+                    
+                else: #if value is duplicate
+                    _values.pop(i) #remove
+                    value -= 1 #decrease loop length
+                
+        return
+    
+
+    def combine(self, source1, source2):
+        """
+        -------------------------------------------------------
+        Combines two source lists into the current target list. 
+        When finished, the contents of source1 and source2 are interlaced 
+        into target and source1 and source2 are empty.
+        Values are sorted.
+        (iterative algorithm)
+        Use: target.combine(source1, source2)
+        -------------------------------------------------------
+        Parameters:
+            source1 - an array-based list (Sorted_List)
+            source2 - an array-based list (Sorted_List)
+        Returns:
+            None
+        -------------------------------------------------------
+        """
+        #Unfinished
+
+        return
+
+    def copy(self):
+        """
+        ---------------------------------------------------------
+        Copies the contents of this list to another sorted list.
+        Use: target = source.copy()
+        -------------------------------------------------------
+        Returns:
+            target - a sorted list containing a copy of the contents 
+                of source (Sorted_List)
+        -------------------------------------------------------
+        """
+        #Unfinished
+
+        return
+
+
+    def count(self, key):
+        """
+        -------------------------------------------------------
+        Determines the number of times key appears in source.
+        Use: n = source.count(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a data element (?)
+        Returns:
+            number - the number of times key appears in source (int)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        number = 0 #number of appearances
+        
+        if len(_values) > 0: #if list is not empty
+            for i in range(len(_values)):
+                if _values[i] == key: #each time key is found, increase count by one
+                    number += 1 
+
+        return number
+    
+
+    def find(self, key):
+        """
+        -------------------------------------------------------
+        Finds and returns a copy of value in source that matches key.
+        Use: value = source.find(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a partial data element (?)
+        Returns:
+            value - a copy of the full value matching key, otherwise None (?)
+        -------------------------------------------------------
+        """
+        contains = key in self._values #use contains method to see if key is in list
+        
+        if contains == True: #if it is in the list, return true
+            value = key
+            
+        else:
+            value = None
+                
+        return value
+    
+
+
+    def index(self, key):
+        """
+        -------------------------------------------------------
+        Finds the location of the first occurrence of key in source.
+        Use: n = source.index(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a data element (?)
+        Returns:
+            i - the location of the value matching key, otherwise -1 (int)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        index = -1
+        
+        for i in range(len(_values)):
+            if _values[i] == key: #run through list, and grab first value that matches key, take it's index
+                index = i
+
+        return index
+    
+
+
+    def insert(self, value):
+        """
+        -------------------------------------------------------
+        Inserts value at the proper place in source.
+        Must be a stable insertion, i.e. consecutive insertions
+        of the same value must keep their order preserved.
+        Use: source.insert(value)
+        -------------------------------------------------------
+        Parameters:
+            value - a data element (?)
+        Returns:
+            None
+        -------------------------------------------------------
+        """
+        _values = self._values
+        i = 0
+        
+        if len(_values) > 0: #if there are actual values in the list
+            while i < len(_values) and value > _values[i]: #run until value has found a spot where it is greater than the ones before it
+                i += 1
+            
+            _values.append(0) #add extra index on the end
+            
+            for j in range(len(_values)-1, i, -1):
+                _values[j] = _values[j-1] #shift each value forward to open space for insertion
+                
+            _values[i] = value #put value at sorted location
+                
+                
+                
+        else: #if list is empty, just append
+            _values.append(value)
+            
+
+        return
+    
+
+    def intersection(self, source1, source2):
+        """
+        -------------------------------------------------------
+        Update the current list with values that appear in both
+        source1 and source2. Values do not repeat.
+        Use: target.intersection(source1, source2)
+        -------------------------------------------------------
+        Parameters:
+            source1 - an array-based list (Sorted_List)
+            source2 - an array-based list (Sorted_List)
+        Returns:
+            None
+        -------------------------------------------------------
+        """
+        _values = self._values
+        i = 0
+        
+        while i < len(source1) and i < len(source2):
+            if source1[i] in source2 and source1[i] not in _values:
+                _values.append(source1[i])
+            
+            i += 1
+                
+        return
+    
+    
+    def is_empty(self):
+        """
+        -------------------------------------------------------
+        Determines if source is empty.
+        Use: b = source.is_empty()
+        -------------------------------------------------------
+        Returns:
+            True if source is empty, False otherwise.
+        -------------------------------------------------------
+        """
+        return len(self._values) == 0
+    
+
+    def __eq__(self, target):
+        """
+        ---------------------------------------------------------
+        Determines whether two Sorted_Lists are equal.
+        Values in self and target are compared and if all values are equal
+        and in the same order, returns True, otherwise returns False.
+        Use: equals = source == target
+        ---------------
+        Parameters:
+            target - a list (Sorted_Lists)
+        Returns:
+            equals - True if source contains the same values
+                as target in the same order, otherwise False. (boolean)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        i = 0
+        equals = True
+        
+        if len(_values) == len(target): #can only be equal if they are the same length
+            while i < len(_values) and _values[i] == target[i]: #if each index lines up. run until end of list, or values aren't equal
+                i += 1
+                
+            if i < len(_values): #if loop stops before i reaches length of _values, than not all values are equal
+                equals = False
+            
+        else:
+            equals = False
+            
+
+        return equals
+    
+
+    def max(self):
+        """
+        -------------------------------------------------------
+        Returns the maximum value in source.
+        Use: value = source.max()
+        -------------------------------------------------------
+        Returns:
+            value - a copy of the maximum value in source (?)
+        -------------------------------------------------------
+        """
+        assert (len(self._values) > 0), 'Cannot find maximum of an empty list'
+        value = deepcopy(self._values[-1]) #because it's a sorted list, max value will always be last
+
+        return value
+    
+
+    def min(self):
+        """
+        -------------------------------------------------------
+        Returns the minimum value in source.
+        Use: value = source.min()
+        -------------------------------------------------------
+        Returns:
+            value - a copy of the minimum value in source (?)
+        -------------------------------------------------------
+        """
+        assert (len(self._values) > 0), 'Cannot find minimum of an empty list'
+        value = deepcopy(self._values[0]) #because it's a sorted list, min value with always be first
+        
+        return value
+    
+
+    def peek(self):
+        """
+        -------------------------------------------------------
+        Returns a copy of the first value in source.
+        Use: value = source.peek()
+        -------------------------------------------------------
+        Returns:
+            value - a copy of the first value in source (?)
+        -------------------------------------------------------
+        """
+        assert (len(self._values) > 0), 'Cannot peek at an empty list'
+        value = deepcopy(self._values[0])
+
+        return value
+    
+
+    def pop(self, *args):
+        """
+        -------------------------------------------------------
+        Finds, removes, and returns the value in source with index i.
+        Use: value = source.pop()
+        Use: value = source.pop(i)
+        -------------------------------------------------------
+        Parameters:
+            args - an array of arguments (tuple of int)
+                args[0], if it exists, is the index i
+        Returns:
+            value - if args exists, the value at position args[0], otherwise 
+                the last value in source, value is removed from source (?)
+        -------------------------------------------------------
+        """
+        assert len(self._values) > 0, "Cannot pop from an empty list"
+        assert len(args) <= 1, "No more than 1 argument allowed"
+
+        if len(args) == 1:
+            # pop the element at position i
+            i = args[0]
+            value = self._values.pop(i)
+        else:
+            # pop the last element
+            value = self._values.pop()
+        return value
+    
+
+    def remove(self, key):
+        """
+        -------------------------------------------------------
+        Finds, removes, and returns the first value in source
+        that matches key.
+        Use: value = source.remove(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a partial data element (?)
+        Returns:
+            value - the full value matching key, otherwise None (?)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        i = 0
+        value = None
+        
+        if len(_values) > 0: #if list is not empty
+            while i < len(_values) and _values[i] != key: #run until key is found, or until entire list is searched
+                i += 1
+                
+            if i < len(_values): #if loop ends before entire list is searched, means value was found
+                value = _values[i]
+                _values.pop(i)
+
+        return value
+    
+
+    def remove_front(self):
+        """
+        -------------------------------------------------------
+        Removes the first item in source.
+        Use: value = source.remove_front()
+        -------------------------------------------------------
+        Returns:
+            value - the first value in the list (?)
+        -------------------------------------------------------
+        """
+        assert (len(self._values) > 0), 'Cannot remove from an empty list'
+        value = self._values.pop(0)
+
+        return value
+    
+
+    def remove_many(self, key):
+        """
+        ---------------------------------------------------------
+        Removes all values that match key in source.
+        Use: source.remove_many(key)
+        ---------------------------------------------------------
+        Parameters:
+            key - the key to match (?)
+        Returns:
+            None
+        ---------------------------------------------------------
+        """
+        _values = self._values
+        value = len(_values)
+        i = 0
+        
+        if len(_values) > 0: #if list is not empty
+            while i < value: #until changeable length is reached
+                if _values[i] == key: #if key is found
+                    _values.pop(i)
+                    value -= 1
+                    
+                else:
+                    i += 1
+        return
+    
+
+    def split(self):
+        """
+        ---------------------------------------------------------
+        Splits list into two parts. target1 contains the first half,
+        target2 the second half. source becomes empty.
+        Use:  target1, target2 = source.split()
+        -------------------------------------------------------
+        Returns:
+            target1 - a new List with >= 50% of the original List (Sorted_List)
+            target2 - a new List with <= 50% of the original List (Sorted_List)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        split = math.floor(len(_values) / 2) #first target must contain >= 50% of list, so round split index down, so target1 loop runs longer
+        target1 = Sorted_List()
+        target2 = Sorted_List()
+        
+        while len(_values) > split: #run until first half is all popped off
+            target1.insert(_values.pop(0)) #all values in first half of list
+            
+        while len(_values) > 0: #run until remainder of list is popped off
+            target2.insert(_values.pop(0)) #all values in second half of list
+        
+
+        return target1, target2
+    
+
+    def split_alt(self):
+        """
+        -------------------------------------------------------
+        Split a List into two parts. target1 contains the even indexed
+        elements, target2 contains the odd indexed elements.
+        source is empty after the function executes.
+        (iterative version)
+        Use: target1, target2 = source.split_alt()
+        -------------------------------------------------------
+        Returns:
+            target1 - the even indexed elements of the list (Sorted_List)
+            target2 - the odd indexed elements of the list (Sorted_List)
+        -------------------------------------------------------
+        """
+        _values = self._values
+        target1 = Sorted_List()
+        target2 = Sorted_List()
+        i = 0
+        
+        while len(_values) > 0: #run until list is empty
+            if i // 2 == i / 2: #check if index is even or odd
+                target1.insert(_values.pop(0)) #remove value when inserted
+                
+            else:
+                target2.insert(_values.pop(0))
+                
+            i += 1 #keep increasing i, to see what index would have been without popping values
+                
+        return target1, target2
+    
+
+    def split_apply(self, func):
+        """
+        -------------------------------------------------------
+        Splits list into two parts. target1 contains all the values 
+        where the result of calling func(value) is True, target2 contains
+        the remaining values. At finish, self is empty. Order of values 
+        in targets is maintained.
+        Use: target1, target2 = source.split_apply(func)
+        -------------------------------------------------------
+        Parameters:
+            func - a function that given a value in the list returns
+                True for some condition, otherwise returns False.
+        Returns:
+            target1 - a new List with values where func(value) is True (List)
+            target2 - a new List with values where func(value) is False (List)
+        -------------------------------------------------------
+        """
+        #Unfinished
+
+        return
+
+    def split_key(self, key):
+        """
+        ---------------------------------------------------------
+        Splits list into two parts. target1 contains all values < key,
+        target2 all values >= key. source becomes empty. source is
+        empty at end.
+        Use:  target1, target2 = source.split_key(key)
+        -------------------------------------------------------
+        Parameters:
+            key - a key value (?)
+        Returns:
+            target1 - a new Sorted List with values < key (Sorted_List)
+            target2 - a new Sorted List with values >= key (Sorted_List)
+        -------------------------------------------------------
+        """
+        #Unfinished
+
+        return
+    
+
+    def union(self, source1, source2):
+        """
+        -------------------------------------------------------
+        Update the current list with all values that appear in
+        source1 and source2. Values do not repeat.
+        Use: target.union(source1, source2)
+        -------------------------------------------------------
+        Parameters:
+            source1 - an array-based list (Sorted_List)
+            source2 - an array-based list (Sorted_List)
+        Returns:
+            None
+        -------------------------------------------------------
+        """
+        _values = self._values
+        
+        if len(source1) > 0 and len(source2) > 0:
+            for i in range(len(source1)):
+                if source1[i] <= source2[0] and source1[i] not in _values:
+                    _values.append(source1[i]) #if value is less than the lowest value in source2, add to list
+                
+                elif source1[i] > source2[0] and source1[i] not in _values:
+                    for j in range(len(source2)): #if value is greater than lowest in source2, run through all of source2 to find where value should go
+                        if source1[i] <= source2[j] and source1[i] not in _values:
+                            _values.append(source1[i])
+                            
+                        elif source1[i] > source2[j] and source2[j] not in _values:
+                            _values.append(source2[j]) #for each value in source2 that the vlaue is greater than, insert before value from source1
+                            
+                    if source1[i] not in _values: #if after all comparison, value still isn't in list, add to end of list, because it must be grater than others
+                        _values.append(source1[i])   
+                    
+            if source2[-1] not in _values: #if largest value in source2 isn't in the list, that means it is greater than all other values, so add it to the end
+                _values.append(source2[-1])
+                
+        elif len(source1) == 0 and len(source2) > 0: #if one list is empty, and the other is not
+            for i in range(len(source2)):
+                if source2[i] not in _values:
+                    _values.append(source2[i])
+                
+        elif len(source1) > 0 and len(source2) == 0:
+            for i in range(len(source1)):
+                if source1[i] not in _values:
+                    _values.append(source1[i])
+                
+        
+
+        return
+    
+
+    def __iter__(self):
+        """
+        USE FOR TESTING ONLY
+        -------------------------------------------------------
+        Generates a Python iterator. Iterates through source
+        from front to rear.
+        Use: for value in source:
+        -------------------------------------------------------
+        Returns:
+            value - the next value in source (?)
+        -------------------------------------------------------
+        """
+        for value in self._values:
+            yield value
+
+
