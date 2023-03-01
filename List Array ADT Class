@@ -96,6 +96,7 @@ class List:
         -------------------------------------------------------
         """
         i = self._linear_search(key)
+
         return i != -1
     
     
@@ -115,6 +116,7 @@ class List:
         -------------------------------------------------------
         """
         _values = self._values
+        
         return i in range(-len(_values), len(_values))
     
 
@@ -164,7 +166,7 @@ class List:
         assert self._is_valid_index(i), 'Invalid index i'
         assert self._is_valid_index(j), 'Invalid index j'
 
-        #Unfinished
+        # Your code here
 
         return
     
@@ -201,7 +203,7 @@ class List:
             None
         -------------------------------------------------------
         """
-        # Unfinished
+        # Your code here
 
         return
     
@@ -286,7 +288,7 @@ class List:
             target - a copy of self (List)
         -------------------------------------------------------
         """
-        #Unfinished
+        # Your code here
 
         return
     
@@ -353,6 +355,7 @@ class List:
               key is not in the list. (int)
         -------------------------------------------------------
         """
+        _values = self._values
         i = self._linear_search(key)
 
         return i
@@ -529,10 +532,9 @@ class List:
         -------------------------------------------------------
         """
         assert (len(self._values) > 0), 'Cannot peek at an empty list'
+        value = deepcopy(self._values[0])
 
-        # Your code here
-
-        return
+        return value
 
     def pop(self, *args):
         """
@@ -630,7 +632,7 @@ class List:
         _values = self._values
         
         if len(_values) > 0:
-            value = _values.pop(0)
+            value = _values.pop(0) #remove value at index 0
             
         else:
             value = None
@@ -678,7 +680,7 @@ class List:
             None
         -------------------------------------------------------
         """
-        #Unfinished
+        # Your code here
 
         return
     
@@ -760,7 +762,7 @@ class List:
             target2 - a new List with values where func(value) is False (List)
         -------------------------------------------------------
         """
-        #Unfinished
+        # Your code here
 
         return
 
@@ -779,7 +781,7 @@ class List:
             target2 - a new List of values >= key (List)
         -------------------------------------------------------
         """
-        #Unfinished
+        # Your code here
 
         return
     
