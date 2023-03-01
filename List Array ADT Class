@@ -166,7 +166,7 @@ class List:
         assert self._is_valid_index(i), 'Invalid index i'
         assert self._is_valid_index(j), 'Invalid index j'
 
-        # Your code here
+        #Unfinished
 
         return
     
@@ -203,7 +203,7 @@ class List:
             None
         -------------------------------------------------------
         """
-        # Your code here
+        #Unfinished
 
         return
     
@@ -288,7 +288,7 @@ class List:
             target - a copy of self (List)
         -------------------------------------------------------
         """
-        # Your code here
+        #Unfinished
 
         return
     
@@ -680,7 +680,7 @@ class List:
             None
         -------------------------------------------------------
         """
-        # Your code here
+        #Unfinished
 
         return
     
@@ -781,7 +781,7 @@ class List:
             target2 - a new List of values >= key (List)
         -------------------------------------------------------
         """
-        # Your code here
+        #Unfinished
 
         return
     
